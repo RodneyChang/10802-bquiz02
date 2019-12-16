@@ -10,12 +10,30 @@
 <link href="./css/css.css" rel="stylesheet" type="text/css">
 <script src="./js/jquery-1.9.1.min.js"></script>
 <script src="./js/js.js"></script>
+<style>
+  /*撰寫彈出視窗的CSS*/
+  .alert{
+    background:rgba(51,51,51,0.8); 
+    color:#FFF; 
+    min-height:100px; 
+    width:400px; 
+    position:fixed; 
+    display:none; 
+    z-index:9999; 
+    overflow:auto;
+  }
+
+  /*彈出視窗中的分類文字設定*/
+  .poptitle{
+    font-size:26px;
+    color:skyblue;
+    margin:5px 0;
+  }
+  </style>
 </head>
 
 <body>
-<div id="alerr" style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
-	<pre id="ssaa"></pre>
-</div>
+<!--刪除<div id="alerr">...</div>-->
 <!--刪除<iframe>...</iframe>-->
 	<div id="all">
     <?php include "header.php" ;?>
