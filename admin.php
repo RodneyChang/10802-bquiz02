@@ -59,13 +59,13 @@
                         $do=(!empty($_GET['do']))?$_GET['do']:"home";
 
                         //我們將所有要include進來的後台功能檔案都放在 ./admin 目錄下，因此根據GET的值來組合include檔的完整路徑
-                        $path="./front/" . $do . ".php";
+                        $path="./admin/" . $do . ".php";
 
                         //判斷檔案是否存在來決定是要匯入檔案還是預設匯入home.php
                         if(file_exists($path)){
                           include $path;
                         }else{
-                          include "./front/home.php";
+                          include "./admin/home.php";
                         }
                        
                       ?>                      
