@@ -15,11 +15,7 @@
 </div>
 <!--刪除<iframe>...</iframe>-->
 	<div id="all">
-    	<div id="title">
-        00 月 00 號 Tuesday | 今日瀏覽: 1 | 累積瀏覽: 36        </div>
-        <div id="title2">
-        	
-        </div>
+    <?php include "header.php" ;?>
         <div id="mm">
         	<div class="hal" id="lef">
             	                	    <a class="blo" href="?do=po">分類網誌</a>
@@ -35,15 +31,26 @@
                     	                    	<a href="?do=login">會員登入</a>
                     	                    </span>
                     	<div class="">
-                		                        </div>
+                      <?php
+                        //利用網址傳值的方式來取得$_GET['do']的值，這個值代表我們要include進來的檔案
+                        $do=(!empty($_GET['do']))?$_GET['do']:"home";
+
+                        //我們將所有要include進來的後台功能檔案都放在 ./admin 目錄下，因此根據GET的值來組合include檔的完整路徑
+                        $path="./front/" . $do . ".php";
+
+                        //判斷檔案是否存在來決定是要匯入檔案還是預設匯入home.php
+                        if(file_exists($path)){
+                          include $path;
+                        }else{
+                          include "./front/home.php";
+                        }
+                       
+                      ?>                      
+                		  </div>
                 </div>
             </div>
         </div>
-        <div id="bottom">
-    	    本網站建議使用：IE9.0以上版本，1024 x 768 pixels 以上觀賞瀏覽 ， Copyright © 2012健康促進網社群平台 All Right Reserved 
-    		 <br>
-    		 服務信箱：health@test.labor.gov.tw<img src="./icon/02B02.jpg" width="45">
-        </div>
+    <?php include "footer.php";?>
     </div>
 
 </body></html>
