@@ -9,6 +9,9 @@ $chk=nums("user",["acc"=>$acc,"pw"=>$pw]);
 
 ////回傳檢查狀態
 if($chk>0){
+  
+    //建立一個session用來紀錄登入的會員帳號
+    $_SESSION['user']=$acc;
     echo 1;
 }else{
     echo 0;

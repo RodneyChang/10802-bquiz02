@@ -26,7 +26,27 @@ $rows=all("news",["sh"=>1]," limit $start,$div");
             <div class="line"><?=mb_substr($r['text'],0,20,"utf8");?>...</div>
             <div class="content" style="display:none"><?=nl2br($r['text']);?></div>
         </td>
-        <td></td>
+        <td>
+        <?php
+
+          //依據session來決定要顯示讚或是收回讚
+          if(!empty($_SESSION['user'])){
+          
+            //檢查log資料表中是否有會員對此篇文章的按讚紀錄
+            $chk=nums("log",["news"=>$r['id'],"user"=>$_SESSION['user']]);
+            
+            if($chk>0){  //有按讚紀錄時顯示收回讚的文字及相關的屬性內容
+          ?>
+            <a id="good<?=$r['id'];?>" onclick="good('<?=$r['id'];?>','2','<?=$_SESSION['user'];?>')">收回讚</a>
+          <?php
+            }else{  //沒有按讚紀錄時顯示讚的文字及相關的屬性內容
+          ?>
+            <a id="good<?=$r['id'];?>" onclick="good('<?=$r['id'];?>','1','<?=$_SESSION['user'];?>')">讚</a>
+          <?php
+            }
+          }
+        ?>        
+        </td>
     </tr>
   <?php
     }

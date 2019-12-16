@@ -3,9 +3,16 @@ function lo(th,url)
 {
 	$.ajax(url,{cache:false,success: function(x){$(th).html(x)}})
 }
+
+/**
+ * 
+ * @param {id} 文章id 
+ * @param {type} 1是按讚，其它是收回讚 
+ * @param {user} 會員帳號
+ */
 function good(id,type,user)
 {
-	$.post("back.php?do=good&type="+type,{"id":id,"user":user},function()
+	$.post("./api/good.php",{"id":id,"type":type,"user":user},function()
 	{
 		if(type=="1")
 		{
